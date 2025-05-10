@@ -1,0 +1,122 @@
+/* —— Global & Body —— */
+body {
+  background: linear-gradient(135deg, #ffe4e1 0%, #ffdbdb 100%);
+  overflow: hidden;              /* hide scrollbars */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+}
+
+/* —— Header —— */
+h1 {
+  margin: 20px 0;
+  color: #d6336c;
+  text-align: center;
+}
+
+/* —— Game Area —— */
+#game-area {
+  position: relative;
+  width: 100%;
+  height: 100vh;                  /* 80% of viewport height */
+  overflow: hidden;              /* clip balloons until they float in */
+}
+
+/* —— Balloons —— */
+.balloon {
+  position: absolute;
+  bottom: -100px;                /* start below the game area */
+  width: 60px;
+  height: 80px;
+  background: radial-gradient(circle at 30% 30%, #ff7f7f, #ff0000);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  cursor: pointer;
+  transition: transform 0.2s;
+
+  animation-fill-mode: forwards;
+}
+
+.balloon:active {
+  transform: scale(1.1);
+}
+
+@keyframes floatUp {
+  0%   { bottom: -100px; }
+  80%  { bottom: 90vh; }   /* reach near the top */
+  100% { bottom: 90vh; }   /* hold there */
+}
+
+/* —— Floating Hearts —— */
+.heart {
+  position: fixed;
+  bottom: -20px;                 /* start just below the viewport */
+  font-size: 1.25rem;
+  opacity: 0.8;
+  pointer-events: none;
+  animation: floatHeart 8s linear forwards;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) scale(1) rotate(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.5) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* —— “I love you, Mom!” Message —— */
+#message {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  color: #d6336c;
+  margin: 0;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+/* —— “Click the 💌” Hint —— */
+#hint {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.25rem;
+  color: #555;
+  opacity: 0;
+  transition: opacity 1s;
+  text-align: center;
+}
+
+/* —— 💌 Icon —— */
+#love-icon {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+/* —— Heartfelt Note —— */
+#heartfelt {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: #800000;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  max-width: 80%;
+  text-align: center;
+  z-index: 10;
+}
