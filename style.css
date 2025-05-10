@@ -83,7 +83,7 @@ h1 {
 /* —— “Click the 💌” Hint —— */
 #hint {
   position: fixed;
-  top: 23%;
+  top: 25%;
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.25rem;
