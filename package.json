@@ -1,0 +1,25 @@
+{
+  "name": "mothers-day-game",
+  "version": "1.0.0",
+  "description": "A Mother’s Day mini game: pop all the balloons, then celebrate with confetti!",
+  "main": "main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "mother's day",
+    "game",
+    "balloons",
+    "confetti"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.6.0"
+  }
+}
