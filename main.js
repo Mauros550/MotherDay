@@ -5,54 +5,40 @@ const message       = document.getElementById('message');
 const BALLOON_COUNT = 10;
 let popped          = 0;
 
-// Color options for balloons
+// Balloon colors
 const COLORS = ['#ff99c8', '#ff4d6d', '#4da6ff'];
 
+// Create balloons
 for (let i = 0; i < BALLOON_COUNT; i++) {
   const b = document.createElement('div');
   b.className = 'balloon';
-
-  // Start below the screen
-  b.style.bottom = '-100px';
-  // Random horizontal position
-  b.style.left   = `${Math.random() * 90}%`;
-
-  // Random color
-  const color = COLORS[Math.floor(Math.random() * COLORS.length)];
-  b.style.background = color;
-
-  // Random float-up duration (10–25s)
-  const duration = 10 + Math.random() * 15;
+  b.style.bottom    = '-100px';
+  b.style.left      = `${Math.random() * 90}%`;
+  b.style.background = COLORS[Math.floor(Math.random() * COLORS.length)];
+  const duration    = 10 + Math.random() * 15;
   b.style.animation = `floatUp ${duration}s linear`;
-
-  // Pop handler
   b.addEventListener('click', () => popBalloon(b));
-
   gameArea.appendChild(b);
 }
 
 function popBalloon(balloon) {
   balloon.remove();
-  popped++;
-  if (popped === BALLOON_COUNT) celebrate();
+  if (++popped === BALLOON_COUNT) celebrate();
 }
 
 function celebrate() {
-  // Show “I love you, Mom!”
+  // 1) Hide only the header text (h1), keep the image
+  const headerText = document.querySelector('#header h1');
+  if (headerText) headerText.style.display = 'none';
+
+  // 2) Show the final message
   message.textContent = 'I love you, Mom!';
   message.style.opacity = 1;
 
-  // Add the “Click the 💌” hint
-  const hint = document.createElement('div');
-  hint.id = 'hint';
-  hint.textContent = 'Click the 💌';
-  document.body.appendChild(hint);
-  setTimeout(() => (hint.style.opacity = 1), 1200);
-
-  // Launch confetti
+  // 3) Confetti!
   confetti({ particleCount: 150, spread: 70, origin: { y: 0.3 } });
 
-  // Create and center the 💌 icon
+  // 4) Show the 💌 icon
   const icon = document.createElement('div');
   icon.id = 'love-icon';
   icon.textContent = '💌';
@@ -60,11 +46,9 @@ function celebrate() {
   document.body.appendChild(icon);
   setTimeout(() => (icon.style.opacity = 1), 1500);
 
-  // On icon click, show the heartfelt note
+  // 5) On icon click, reveal note
   icon.addEventListener('click', () => {
-    hint.remove();
     icon.remove();
-
     const note = document.createElement('p');
     note.id = 'heartfelt';
     note.textContent =
@@ -73,18 +57,15 @@ function celebrate() {
   });
 }
 
-// —— HEART BACKGROUND —— //
+// Floating heart background
 function createHeart() {
   const h = document.createElement('div');
   h.className = 'heart';
   h.textContent = '❤️';
-  // Random start position & size
-  h.style.left     = Math.random() * 100 + 'vw';
-  h.style.fontSize = 1 + Math.random() * 1 + 'rem';
+  h.style.bottom   = '-20px';
+  h.style.left     = `${Math.random() * 100}vw`;
+  h.style.fontSize = `${1 + Math.random()}rem`;
   document.body.appendChild(h);
-  // Clean up after animation
   setTimeout(() => h.remove(), 8000);
 }
-
-// Spawn hearts every 400ms
 setInterval(createHeart, 400);
