@@ -71,7 +71,7 @@ h1 {
 /* —— “I love you, Mom!” Message —— */
 #message {
   position: fixed;
-  top: 18%;
+  
   left: 50%;
   transform: translateX(-50%);
   font-size: 2.5rem;
