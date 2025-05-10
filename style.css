@@ -138,3 +138,16 @@ h1 {
     padding: 10px;
   }
 }
+
+/* —— Header & Image Styling —— */
+#header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#header-img {
+  max-width: 150px;      /* adjust to taste */
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;   /* center + gap below */
+}
