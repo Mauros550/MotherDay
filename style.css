@@ -69,7 +69,7 @@ h1 {
 /* —— “I love you, Mom!” Message —— */
 #message {
   position: fixed;
-  top: 20%;
+  top: 15%;
   left: 50%;
   transform: translateX(-50%);
   font-size: 2.5rem;
@@ -83,7 +83,7 @@ h1 {
 /* —— “Click the 💌” Hint —— */
 #hint {
   position: fixed;
-  top: 30%;
+  top: 23%;
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.25rem;
@@ -113,10 +113,31 @@ h1 {
   transform: translate(-50%, -50%);
   font-size: 1.5rem;
   color: #800000;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.9);
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 8px;
-  max-width: 80%;
+  max-width: 85%;                /* never wider than 85% of screen */
+  max-height: 70vh;              /* never taller than 70% of viewport */
+  overflow-y: auto;              /* scroll if text is long */
+  word-wrap: break-word;
   text-align: center;
   z-index: 10;
+}
+
+/* —— Responsive Tweaks —— */
+@media (max-width: 600px) {
+  #message {
+    top: 15%;
+    font-size: 2rem;
+  }
+  #hint {
+    top: calc(15% + 2.5rem);
+    font-size: 1rem;
+  }
+  #heartfelt {
+    font-size: 1.2rem;
+    max-width: 90%;
+    max-height: 60vh;
+    padding: 10px;
+  }
 }
